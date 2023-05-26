@@ -3,26 +3,38 @@
 #include "Clientes.h"
 #include "Proveedores.h"
 using namespace std;
+
+string direccion; 
+string nit; 
+string fecha_nacimiento;
 int main()
 {
-    string nit, nombres, apellidos, direccion, fecha_nacimiento, fecha_inicio_labores, fecha_ingreso, DPI, Correo,genero;
+    //tabla clientes
+    string idCliente, nombres, apellidos, fecha_ingreso, Correo,genero;
     int telefono;
+    cout << "Ingrese su ID como Cliente:";
+    getline(cin,idCliente);
     cout << "Ingrese Nit: ";
     getline(cin, nit);
     cout << "Ingrese nombres: ";
     getline(cin, nombres);
     cout << "Ingrese apellidos: ";
     getline(cin, apellidos);
-    cout << "Ingrese direccion: ";
-    getline(cin, direccion);
+    cout << "Ingrese genero: ";
+    getline(cin, genero);
     cout << "Ingrese telefono: ";
     cin >> telefono;
     cin.ignore();
-    cout << "Ingrese fecha nacimiento: ";
-    getline(cin, fecha_nacimiento);
-    Clientes c = Clientes(nombres, apellidos, direccion, telefono, fecha_nacimiento, fecha_inicio_labores, fecha_ingreso,DPI,Correo,genero,nit);
+    cout << "Ingrese Correo Electronico: ";
+    getline(cin, Correo);
+    cout << "Ingrese su Fecha de Ingreso";
+    getline(cin, fecha_ingreso);
+    Clientes c = Clientes (idCliente, nombres, apellidos, nit, genero, telefono, fecha_ingreso , Correo);
     c.crear();
     c.leer();
+
+    //actualizar
+
     return 0;
 
     //tabla proveedores
@@ -42,6 +54,7 @@ int main()
     Proveedores C = Proveedores(idProveedore, proveedor, nit, direccion, telefonos);
     C.Crear();
     C.Leer();
+
     //actualizar 
     cout << "Ingrese idProveedore: " << endl;
     cin >> idProveedore;
@@ -56,6 +69,7 @@ int main()
     getline(cin, telefonos);
     Proveedores U = Proveedores(idProveedore, proveedor, nit, direccion, telefonos);
     U.Actualizar();
+
     //Eliminar
     cout << "Ingrese el idProveedore a eliminar: " << endl;
     cin >> idProveedore;

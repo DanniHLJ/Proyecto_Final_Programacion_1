@@ -99,7 +99,7 @@ public:
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 			string t = to_string(idProveedore);
-			string update = "UPDATE productos SET proveedor='" + proveedor + "',nit='" + nit + "',direccion='" + direccion + "',telefonos='" + telefono + "' WHERE idProducto = '" + t + "'";
+			string update = "UPDATE productos SET proveedor='" + proveedor + "',nit='" + nit + "',direccion='" + direccion + "',telefono='" + telefono + "' WHERE idProducto = '" + t + "'";
 			const char* u = update.c_str();
 			q_estado = mysql_query(cn.getConectar(), u);
 			if (!q_estado) {

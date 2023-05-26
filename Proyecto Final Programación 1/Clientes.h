@@ -9,12 +9,14 @@ using namespace std;
 class Clientes : Persona {
 	//atributos
 private: string nit;
+	   int idCliente;
 	   //constructor
 public:
 	Clientes() {
 	}
 
-	Clientes(string nom, string ape, string dir, int tel, string date, string date_inlab, string date_ing, string dpi, string mail, string gen, string n) : Persona(nom, ape, dir, tel, date, date_inlab, date_ing, dpi, gen, mail) {
+	Clientes(string nom, string ape, string gen, int tel, string mail, string date_ing, string n, int id ) : Persona ( id,  nom,  ape,  dir, tel,  date,  date_inlab,  date_ing, dpi, gen,  mail) {
+		idCliente = id;
 		nit = n;
 		fecha_ingreso = date_ing;
 		genero = gen;
@@ -23,6 +25,7 @@ public:
 	};
 	//Metodos
 	//set (modificar)
+
 	void setNit(string n) { nit = n; }
 	void setNombres(string nom) { nombres = nom; }
 	void setApellidos(string ape) { apellidos = ape; }
@@ -32,7 +35,10 @@ public:
 	void setFechaIngreso(string date_ing) { fecha_ingreso = date_ing; }
 	void setGenero(string gen) { genero = gen; }
 	void setCorreo(string mail) { correo = mail; }
+
 	//get (obtener)
+
+	int getidCliente() { return idCliente; }
 	string getNit() { return nit; }
 	string getNombres() { return nombres; }
 	string getApellidos() { return apellidos; }
@@ -103,4 +109,50 @@ public:
 		}
 		cn.cerrar_conexion();
 	}
+	void Actualizar() {
+		int q_estado;
+		ConexionBD cn = ConexionBD();
+		cn.abrir_conexion();
+		if (cn.getConectar()) {
+			string t = to_string(idCliente);
+			string update = "UPDATE clientes SET CLIENTES='" + nombres + "','" + apellidos + "',nit='" + nit + "','" + genero + "',telefonos=' telefono +' WHERE idCliente = '" + t + "'";
+			const char* u = update.c_str();
+			q_estado = mysql_query(cn.getConectar(), u);
+			if (!q_estado) {
+				system("cls");
+				cout << "Query Update Successfuly" << endl;
+			}
+			else {
+				system("cls");
+				cout << "Query Update Failed: " << mysql_error(cn.getConectar()) << endl;
+			}
+		}
+		else {
+			cout << "Error al conectar" << endl;
+		}
+		cn.cerrar_conexion();
+
+	};
+	void Eliminar() {
+		int q_estado;
+		ConexionBD cn = ConexionBD();
+		cn.abrir_conexion();
+		if (cn.getConectar()) {
+			string deleteQuery = "DELETE FROM clientes WHERE idCliente = '" + to_string(idCliente) + "'";
+			const char* d = deleteQuery.c_str();
+			q_estado = mysql_query(cn.getConectar(), d);
+			if (!q_estado) {
+				system("cls");
+				cout << "Query Delete Successfuly" << endl;
+			}
+			else {
+				system("cls");
+				cout << "Query Delete got problems";
+			}
+		}
+		else {
+			cout << "Error al conectar" << endl;
+		}
+		cn.cerrar_conexion();
+	};
 };
