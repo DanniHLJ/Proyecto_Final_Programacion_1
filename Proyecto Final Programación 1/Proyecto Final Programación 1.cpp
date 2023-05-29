@@ -1,7 +1,9 @@
 #include <mysql.h>
 #include <iostream>
+#include "PersonaC.h"
 #include "Clientes.h"
 #include "Proveedores.h"
+
 using namespace std;
 
 string direccion; 
@@ -29,7 +31,9 @@ int main()
     getline(cin, Correo);
     cout << "Ingrese su Fecha de Ingreso";
     getline(cin, fecha_ingreso);
-    Clientes c = Clientes (idCliente, nombres, apellidos, nit, genero, telefono, fecha_ingreso , Correo);
+
+    Clientes c = Clientes(idCliente, nombres, apellidos, nit, genero, telefono, fecha_ingreso, Correo);
+
     c.crear();
     c.leer();
 

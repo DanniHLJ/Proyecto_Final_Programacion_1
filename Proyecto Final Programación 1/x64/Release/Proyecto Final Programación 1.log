@@ -1,6 +1,10 @@
 ﻿  Clientes.cpp
-  Persona.cpp
+  PersonaC.cpp
   Proveedores.cpp
   Proyecto Final Programación 1.cpp
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(24,26): error C2440: '<function-style-cast>': no se puede realizar la conversión de 'initializer list' a 'Clientes'
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(24,26): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,5): error C2065: 'Clientes': identificador no declarado
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,14): error C2146: error de sintaxis: falta ';' delante del identificador 'c'
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,14): error C2065: 'c': identificador no declarado
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,18): error C3861: 'Clientes': no se encontró el identificador
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(35,5): error C2065: 'c': identificador no declarado
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(36,5): error C2065: 'c': identificador no declarado

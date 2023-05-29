@@ -2,51 +2,38 @@
 #include <mysql.h>
 #include <iostream>
 #include "ConexionBD.h"
-#include "Persona.h"
+#include "PersonaC.h"
 #include <string>
 
 using namespace std;
-class Clientes : Persona {
+class Cliente : PersonaC {
 	//atributos
 private: string nit;
 	   int idCliente;
 	   //constructor
 public:
-	Clientes() {
+	Cliente() {
 	}
-
-	Clientes(string nom, string ape, string gen, int tel, string mail, string date_ing, string n, int id ) : Persona ( id,  nom,  ape,  dir, tel,  date,  date_inlab,  date_ing, dpi, gen,  mail) {
-		idCliente = id;
+	Cliente(int idCliente, string nom, string ape, string tel, string gen, string date_ing, string n, string mail) : PersonaC(nom, ape, tel, gen, n, mail, date_ing) {
 		nit = n;
-		fecha_ingreso = date_ing;
-		genero = gen;
-		correo = mail;
-
 	};
 	//Metodos
 	//set (modificar)
-
 	void setNit(string n) { nit = n; }
 	void setNombres(string nom) { nombres = nom; }
 	void setApellidos(string ape) { apellidos = ape; }
-	void setDireccion(string dir) { direccion = dir; }
 	void setTelefono(int tel) { telefono = tel; }
-	void setFechaNacimiento(string date) { fecha_nacimiento = date; }
-	void setFechaIngreso(string date_ing) { fecha_ingreso = date_ing; }
-	void setGenero(string gen) { genero = gen; }
+	void setGenero(int gen) { genero = gen; }
 	void setCorreo(string mail) { correo = mail; }
-
+	void setFechaIngreso(string date_ing) { fecha_ingreso = date_ing; }
 	//get (obtener)
-
-	int getidCliente() { return idCliente; }
 	string getNit() { return nit; }
 	string getNombres() { return nombres; }
 	string getApellidos() { return apellidos; }
-	string getDireccion() { return direccion; }
-	int getTelefono() { return telefono; }
-	string getFechaIngreso() { return fecha_ingreso; }
+	string getTelefono() { return telefono; }
 	string getGenero() { return genero; }
 	string getCorreo() { return correo; }
+	string getFechaIngreso() { return fecha_ingreso; }
 
 	//metodo
 	void crear() {
@@ -55,8 +42,8 @@ public:
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 
-			string t = to_string(telefono);
-			string insert = "INSERT INTO CLIENTES(nit,nombres,apellidos,direccion,telefono,fecha_nacimiento) VALUES('" + nit + "','" + nombres + "','" + apellidos + "','" + direccion + "','" + t + "','" + fecha_nacimiento + "')";
+			string t = to_string(idCliente);
+			string insert = "INSERT INTO CLIENTES(nit,nombres,apellidos,direccion,telefono,fecha_nacimiento) VALUES('" + nit + "','" + nombres + "','" + apellidos + "','" + apellidos + "''" + t + "','" + correo + "','" + fecha_ingreso + "')";
 			const char* i = insert.c_str();
 			q_estado = mysql_query(cn.getConectar(), i);
 			if (!q_estado) {
@@ -115,7 +102,7 @@ public:
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 			string t = to_string(idCliente);
-			string update = "UPDATE clientes SET CLIENTES='" + nombres + "','" + apellidos + "',nit='" + nit + "','" + genero + "',telefonos=' telefono +' WHERE idCliente = '" + t + "'";
+			string update = "UPDATE clientes SET nombres='" + nombres + "',apellidos='" + apellidos + "',NIT='" + nit + "',genero='" + genero + "',correo='" + correo + "',fechaingreso='" + fecha_ingreso + "',telefono='" + telefono + "' WHERE idCliente =  '" + t + "'";
 			const char* u = update.c_str();
 			q_estado = mysql_query(cn.getConectar(), u);
 			if (!q_estado) {
