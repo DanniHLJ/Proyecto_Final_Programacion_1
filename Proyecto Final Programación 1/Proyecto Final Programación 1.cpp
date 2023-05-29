@@ -12,10 +12,11 @@ string fecha_nacimiento;
 int main()
 {
     //tabla clientes
-    string idCliente, nombres, apellidos, fecha_ingreso, Correo,genero;
-    int telefono;
+    string  nombres, apellidos, fecha_ingreso, Correo,genero,nit,telefono;
+    int idcliente;
     cout << "Ingrese su ID como Cliente:";
-    getline(cin,idCliente);
+    cin>>idcliente;
+    cin.ignore();
     cout << "Ingrese Nit: ";
     getline(cin, nit);
     cout << "Ingrese nombres: ";
@@ -32,7 +33,7 @@ int main()
     cout << "Ingrese su Fecha de Ingreso";
     getline(cin, fecha_ingreso);
 
-    Clientes c = Clientes(idCliente, nombres, apellidos, nit, genero, telefono, fecha_ingreso, Correo);
+    Cliente c = Cliente( idcliente,nombres, apellidos, telefono, genero,fecha_ingreso, nit, Correo);
 
     c.crear();
     c.leer();

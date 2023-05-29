@@ -1,10 +1,8 @@
 ﻿  Clientes.cpp
-  PersonaC.cpp
-  Proveedores.cpp
   Proyecto Final Programación 1.cpp
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,5): error C2065: 'Clientes': identificador no declarado
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,14): error C2146: error de sintaxis: falta ';' delante del identificador 'c'
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,14): error C2065: 'c': identificador no declarado
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(34,18): error C3861: 'Clientes': no se encontró el identificador
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(35,5): error C2065: 'c': identificador no declarado
-C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Proyecto Final Programación 1.cpp(36,5): error C2065: 'c': identificador no declarado
+  Generando código
+  8 of 184 functions ( 4.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Proyecto Final Programación 1.vcxproj -> C:\Users\esteb\OneDrive\Escritorio\Proyecto_Final_Programacion_1-main\x64\Release\Proyecto Final Programación 1.exe

@@ -14,16 +14,17 @@ private: string nit;
 public:
 	Cliente() {
 	}
-	Cliente(int idCliente, string nom, string ape, string tel, string gen, string date_ing, string n, string mail) : PersonaC(nom, ape, tel, gen, n, mail, date_ing) {
+	Cliente(int idc, string nom, string ape, string tel, string gen, string date_ing, string n, string mail) : PersonaC(nom, ape, tel, gen, n, mail, date_ing) {
 		nit = n;
+		idCliente = idc;
 	};
 	//Metodos
 	//set (modificar)
 	void setNit(string n) { nit = n; }
 	void setNombres(string nom) { nombres = nom; }
 	void setApellidos(string ape) { apellidos = ape; }
-	void setTelefono(int tel) { telefono = tel; }
-	void setGenero(int gen) { genero = gen; }
+	void setTelefono(string tel) { telefono = tel; }
+	void setGenero(string gen) { genero = gen; }
 	void setCorreo(string mail) { correo = mail; }
 	void setFechaIngreso(string date_ing) { fecha_ingreso = date_ing; }
 	//get (obtener)
