@@ -1,48 +1,53 @@
 #pragma once
-#include <mysql.h>
 #include <iostream>
+#include <mysql.h>
 #include "ConexionBD.h"
 #include <string>
+
 class Proveedores
 {
+	//idProveedore, proveedor, nit, direccion, telefono
 private:
 	int idProveedore;
 	string proveedor, nit, direccion, telefono;
+
 public:
 	Proveedores() {
-	}
-	Proveedores(int id, string p, string n, string d, string t) {
+	};
+	Proveedores(int id, string prov, string n, string dir, string tel) {
 		idProveedore = id;
-		proveedor = p;
+		proveedor = prov;
 		nit = n;
-		direccion = d;
-		telefono = t;
-	}
+		direccion = dir;
+		telefono = tel;
+	};
 	Proveedores(int id) {
 		idProveedore = id;
-	}
-	//Metodos set
-	void setIdProve(int id) { idProveedore = id; }
-	void setProveedor(string p) { proveedor = p; }
-	void setNit(string n) { nit = n; }
-	void setDir(string d) { direccion = d; }
-	void setTel(string t) { telefono = t; }
+	};
+	//metodos
+	//set
+	void set_idProveedore(int id) { idProveedore = id; }
+	void set_proveedor(string prov) { proveedor = prov; }
+	void set_nit(string n) { proveedor = n; }
+	void set_direccion(string dir) { proveedor = dir; }
+	void set_telefono(string tel) { proveedor = tel; }
+	//get
+	int get_idProveedore() { return idProveedore; }
+	string get_proveedor() { return proveedor; }
+	string get_nit() { return nit; }
+	string get_direccion() { return direccion; }
+	string get_telefono() { return telefono; }
 
-	//metodos get
-	int getId() { return idProveedore; }
-	string getProve() { return proveedor; }
-	string getNit() { return nit; }
-	string getDir() { return direccion; }
-	string getTel() { return telefono; }
 	//CRUD
-	void Crear() {
+	void crear() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 
 			string t = to_string(idProveedore);
-			string insert = "INSERT INTO proveedores(idProveedore,proveedor,nit,direccion,telefono) VALUES('" + t + "','" + proveedor + "','" + nit + "','" + direccion + "','" + telefono + "')";
+			string insert = "INSERT INTO proveedores(idProveedore,proveedor,nit,direccion,telefono) "
+				"VALUES('" + t + "','" + proveedor + "','" + nit + "','" + direccion + "','" + telefono + "')";
 			const char* i = insert.c_str();
 			q_estado = mysql_query(cn.getConectar(), i);
 			if (!q_estado) {
@@ -51,7 +56,7 @@ public:
 			}
 			else {
 				system("cls");
-				cout << "Query Insert got problems";
+				cout << "Query Insert got problems" << mysql_error(cn.getConectar()) << endl;
 			}
 		}
 		else {
@@ -59,7 +64,8 @@ public:
 		}
 		cn.cerrar_conexion();
 	};
-	void Leer() {
+
+	void leer() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		MYSQL_ROW fila;
@@ -72,11 +78,11 @@ public:
 			if (!q_estado) {
 				resultado = mysql_store_result(cn.getConectar());
 				while (fila = mysql_fetch_row(resultado)) {
-					cout << "idProveedore: " << fila[0] << endl;
-					cout << "proveedor: " << fila[1] << endl;
-					cout << "nit: " << fila[2] << endl;
-					cout << "direccion: " << fila[3] << endl;
-					cout << "telefono :" << fila[4] << endl;
+					cout << "idProveedore " << fila[0] << endl;
+					cout << "Proveedores: " << fila[1] << endl;
+					cout << "NIT: " << fila[2] << endl;
+					cout << "Direccion: " << fila[3] << endl;
+					cout << "Telefono: " << fila[4] << endl;
 					cout << "\n";
 				}
 				cout << "\n";
@@ -84,7 +90,7 @@ public:
 			}
 			else {
 				system("cls");
-				cout << "Query Select got problems" << endl;
+				cout << "Query Select got problems" << mysql_error(cn.getConectar()) << endl;
 			}
 
 		}
@@ -92,14 +98,15 @@ public:
 			cout << "Error en la conexion" << endl;
 		}
 		cn.cerrar_conexion();
-	}
-	void Actualizar() {
+	};
+
+	void actualizar() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 			string t = to_string(idProveedore);
-			string update = "UPDATE productos SET proveedor='" + proveedor + "',nit='" + nit + "',direccion='" + direccion + "',telefono='" + telefono + "' WHERE idProducto = '" + t + "'";
+			string update = "UPDATE proveedores SET proveedores='" + proveedor + "',NIT='" + nit + "',Direccion='" + direccion + "',telefono=" + telefono + "' WHERE idProveedore = '" + t + "'";
 			const char* u = update.c_str();
 			q_estado = mysql_query(cn.getConectar(), u);
 			if (!q_estado) {
@@ -115,9 +122,9 @@ public:
 			cout << "Error al conectar" << endl;
 		}
 		cn.cerrar_conexion();
-
 	};
-	void Eliminar() {
+
+	void eliminar() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
@@ -139,4 +146,5 @@ public:
 		}
 		cn.cerrar_conexion();
 	};
+
 };

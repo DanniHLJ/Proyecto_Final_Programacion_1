@@ -1,50 +1,63 @@
 #pragma once
-#include <mysql.h>
 #include <iostream>
+#include <mysql.h>
 #include "ConexionBD.h"
-#include "PersonaC.h"
 #include <string>
-
 using namespace std;
-class Cliente : PersonaC {
-	//atributos
-private: string nit;
-	   int idCliente;
-	   //constructor
+class Cliente
+{
+private:
+	int idCliente = 0;
+	bool genero = 0;
+	string nombres, apellidos, Nit, telefono, correo_electronico;
+	//constructor
 public:
 	Cliente() {
-	}
-	Cliente(int idc, string nom, string ape, string tel, string gen, string date_ing, string n, string mail) : PersonaC(nom, ape, tel, gen, n, mail, date_ing) {
-		nit = n;
-		idCliente = idc;
 	};
-	//Metodos
+	Cliente(int id, string nom, string ape, string n, bool g, string phone, string correo) {
+		idCliente = id;
+		nombres = nom;
+		apellidos = ape;
+		Nit = n;
+		genero = g;
+		telefono = phone;
+		correo_electronico = correo;
+	};
+	Cliente(int id) {
+		idCliente = id;
+	};
+	Cliente(string n, int id) {
+		Nit = n;
+		idCliente = id;
+	};
+	//metodos
 	//set (modificar)
-	void setNit(string n) { nit = n; }
+	void setidCliente(int id) { idCliente = id; }
 	void setNombres(string nom) { nombres = nom; }
 	void setApellidos(string ape) { apellidos = ape; }
-	void setTelefono(string tel) { telefono = tel; }
-	void setGenero(string gen) { genero = gen; }
-	void setCorreo(string mail) { correo = mail; }
-	void setFechaIngreso(string date_ing) { fecha_ingreso = date_ing; }
+	void setNit(string n) { Nit = n; }
+	void setGenero(bool g) { genero = g; }
+	void setTelefono(string phone) { telefono = phone; }
+	void setCorreo_electronico(string correo) { correo_electronico = correo; }
 	//get (obtener)
-	string getNit() { return nit; }
+	int getidCliente() { return idCliente; }
 	string getNombres() { return nombres; }
 	string getApellidos() { return apellidos; }
+	string getNit() { return Nit; }
+	bool getGenero() { return genero; }
 	string getTelefono() { return telefono; }
-	string getGenero() { return genero; }
-	string getCorreo() { return correo; }
-	string getFechaIngreso() { return fecha_ingreso; }
+	string getCorreo_electronico() { return correo_electronico; }
 
-	//metodo
+
+	//CRUD
 	void crear() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
-
-			string t = to_string(idCliente);
-			string insert = "INSERT INTO CLIENTES(nit,nombres,apellidos,direccion,telefono,fecha_nacimiento) VALUES('" + nit + "','" + nombres + "','" + apellidos + "','" + apellidos + "''" + t + "','" + correo + "','" + fecha_ingreso + "')";
+			int genero_int = genero ? 1 : 0;
+			string insert = "INSERT INTO clientes(nombres,apellidos,NIT,genero,telefono,correo_electronico,fechaingreso) "
+				"VALUES('" + nombres + "','" + apellidos + "','" + Nit + "'," + to_string(genero_int) + ",'" + telefono + "','" + correo_electronico + "', NOW())";
 			const char* i = insert.c_str();
 			q_estado = mysql_query(cn.getConectar(), i);
 			if (!q_estado) {
@@ -53,14 +66,14 @@ public:
 			}
 			else {
 				system("cls");
-				cout << "Query Insert got problems";
+				cout << "Query Insert got problems" << mysql_error(cn.getConectar()) << endl;
 			}
 		}
 		else {
 			cout << "Error al conectar" << endl;
 		}
 		cn.cerrar_conexion();
-	}
+	};
 	void leer() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
@@ -68,19 +81,20 @@ public:
 		MYSQL_RES* resultado;
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
-			string consulta = "SELECT *FROM clientes";
+			string consulta = "SELECT idCliente, nombres,apellidos,NIT,telefono,correo_electronico,fechaingreso, CASE WHEN genero = 0 THEN 'masculino' WHEN genero = 1 THEN 'femenino' END AS genero FROM clientes";
 			const char* x = consulta.c_str();
 			q_estado = mysql_query(cn.getConectar(), x);
 			if (!q_estado) {
 				resultado = mysql_store_result(cn.getConectar());
 				while (fila = mysql_fetch_row(resultado)) {
-					cout << "id_cliente: " << fila[0] << endl;
-					cout << "nit: " << fila[1] << endl;
-					cout << "nombres: " << fila[2] << endl;
-					cout << "apellidos: " << fila[3] << endl;
-					cout << "direccion: " << fila[4] << endl;
-					cout << "telefono :" << fila[5] << endl;
-					cout << "fecha_nacimiento: " << fila[6] << endl;
+					cout << "idCliente: " << fila[0] << endl;
+					cout << "nombres: " << fila[1] << endl;
+					cout << "apellidos: " << fila[2] << endl;
+					cout << "NIT: " << fila[3] << endl;
+					cout << "genero: " << fila[7] << endl;
+					cout << "telefono :" << fila[4] << endl;
+					cout << "correo_electronico :" << fila[5] << endl;
+					cout << "fechaingreso: " << fila[6] << endl;
 					cout << "\n";
 				}
 				cout << "\n";
@@ -88,7 +102,7 @@ public:
 			}
 			else {
 				system("cls");
-				cout << "Query Select got problems" << endl;
+				cout << "Query Select got problems" << mysql_error(cn.getConectar()) << endl;
 			}
 
 		}
@@ -97,13 +111,14 @@ public:
 		}
 		cn.cerrar_conexion();
 	}
-	void Actualizar() {
+	void actualizar() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
 			string t = to_string(idCliente);
-			string update = "UPDATE clientes SET nombres='" + nombres + "',apellidos='" + apellidos + "',NIT='" + nit + "',genero='" + genero + "',correo='" + correo + "',fechaingreso='" + fecha_ingreso + "',telefono='" + telefono + "' WHERE idCliente =  '" + t + "'";
+			int genero_int = genero ? 1 : 0;
+			string update = "UPDATE clientes SET nombres='" + nombres + "',apellidos='" + apellidos + "',NIT='" + Nit + "',genero=" + to_string(genero_int) + ",telefono='" + telefono + "',correo_electronico='" + correo_electronico + "' WHERE idCliente = '" + t + "'";
 			const char* u = update.c_str();
 			q_estado = mysql_query(cn.getConectar(), u);
 			if (!q_estado) {
@@ -119,9 +134,9 @@ public:
 			cout << "Error al conectar" << endl;
 		}
 		cn.cerrar_conexion();
-
 	};
-	void Eliminar() {
+
+	void eliminar() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
 		cn.abrir_conexion();
@@ -140,6 +155,38 @@ public:
 		}
 		else {
 			cout << "Error al conectar" << endl;
+		}
+		cn.cerrar_conexion();
+	};
+	bool NitCliente()
+	{
+		int q_estado;
+		ConexionBD cn = ConexionBD();
+		MYSQL_ROW fila;
+		MYSQL_RES* resultado;
+		cn.abrir_conexion();
+		if (cn.getConectar()) {
+			string consulta = "SELECT nombres,apellidos FROM clientes where Nit='" + Nit + "'";
+			const char* x = consulta.c_str();
+			q_estado = mysql_query(cn.getConectar(), x);
+			if (!q_estado) {
+				resultado = mysql_store_result(cn.getConectar());
+				while (fila = mysql_fetch_row(resultado)) {
+					cout << fila[0] << " " << fila[1] << endl;
+				}
+				cout << "\n";
+				cout << "_________________________________" << endl;
+			}
+			else {
+				system("cls");
+				cout << "Busqueda Nit got problems" << mysql_error(cn.getConectar()) << endl;
+				return false;
+			}
+
+		}
+		else {
+			cout << "Error en la conexion" << endl;
+			return false;
 		}
 		cn.cerrar_conexion();
 	};
