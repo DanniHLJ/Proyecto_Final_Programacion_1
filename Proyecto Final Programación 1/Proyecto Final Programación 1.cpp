@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Funcionalidades.h"
-#include "Factura.h""
 using namespace std;
 int main() {
     char opc;
@@ -205,5 +204,10 @@ int main() {
             break;
         default:
             break;
-
-        };
+        
+        cout << "Desea continuar? (s/n)";
+        cin >> opc;
+    } while (opc == 's' || opc == 'S');
+    system("pause");
+    return 0;
+}

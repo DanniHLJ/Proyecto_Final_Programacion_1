@@ -134,7 +134,6 @@
     <ClCompile Include="Clientes.cpp" />
     <ClCompile Include="Compras.cpp" />
     <ClCompile Include="Empleados.cpp" />
-    <ClCompile Include="Factura.cpp" />
     <ClCompile Include="Funcionalidades.cpp" />
     <ClCompile Include="Marcas.cpp" />
     <ClCompile Include="Productos.cpp" />
@@ -148,7 +147,6 @@
     <ClInclude Include="Compras.h" />
     <ClInclude Include="ConexionBD.h" />
     <ClInclude Include="Empleados.h" />
-    <ClInclude Include="Factura.h" />
     <ClInclude Include="Funcionalidades.h" />
     <ClInclude Include="Marcas.h" />
     <ClInclude Include="Productos.h" />
