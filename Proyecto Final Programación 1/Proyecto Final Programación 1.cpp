@@ -6,8 +6,8 @@ int main() {
     int opcion = 0;
     do {
         system("cls");
-        cout << "Bienvenido al Menu Fase I - Proyecto final." << endl;
-        cout << "Por favor elija una tabla: 1. Clientes \n 2. Puestos \n3.Empleados \n4. Marcas \n5.Proveedores \n6. Productos \n7.Compras & Compras Detalle \n8.Ventas & Ventas Detalle \n9.Busqueda Nit" << endl;
+        cout << "Menu Fase I - Proyecto final." << endl;
+        cout << "Elija una tabla: 1. Clientes \n 2. Puestos \n3.Empleados \n4. Marcas \n5.Proveedores \n6. Productos \n7.Compras & Compras Detalle \n8.Ventas & Ventas Detalle \n9.Busqueda Nit" << endl;
         cin >> opcion;
         switch (opcion) {
         case 1: //Clientes
@@ -37,8 +37,8 @@ int main() {
         case 2: //Puestos
             system("cls");
             int opcionpuestos;
-            cout << "_____Bienvenido al CRUD de Puestos_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Puestos_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionpuestos;
             switch (opcionpuestos) {
@@ -61,8 +61,8 @@ int main() {
         case 3: //Empleados
             system("cls");
             int opcionempleados;
-            cout << "_____Bienvenido al CRUD de Empleados_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Empleados_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionempleados;
             switch (opcionempleados) {
@@ -85,8 +85,8 @@ int main() {
         case 4: //Marcas
             system("cls");
             int opcionmarcas;
-            cout << "_____Bienvenido al CRUD de Marcas_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Marcas_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionmarcas;
             switch (opcionmarcas) {
@@ -109,8 +109,8 @@ int main() {
         case 5: //Proveedores
             system("cls");
             int opcionproveed;
-            cout << "_____Bienvenido al CRUD de Proveedores_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "______CRUD de Proveedores_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionproveed;
             switch (opcionproveed) {
@@ -133,8 +133,8 @@ int main() {
         case 6: //Productos
             system("cls");
             int opcionpro;
-            cout << "_____Bienvenido al CRUD de Productos_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Productos_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionpro;
             switch (opcionpro) {
@@ -157,8 +157,8 @@ int main() {
         case 7: //Compras
             system("cls");
             int opcioncompras;
-            cout << "_____Bienvenido al CRUD de Compras_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Compras_____" << endl;
+            cout << "1. Crear \n2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcioncompras;
             switch (opcioncompras) {
@@ -181,8 +181,8 @@ int main() {
         case 8: //Ventas
             system("cls");
             int opcionv;
-            cout << "_____Bienvenido al CRUD de Ventas y Ventas Detalle!_____" << endl;
-            cout << "1. Crear 2.Leer 3.Actualizar 4.Eliminar" << endl;
+            cout << "_____CRUD de Ventas y Ventas Detalle_____" << endl;
+            cout << "1. Crear \n 2.Leer \n3.Actualizar \n4.Eliminar" << endl;
             cout << "opcion:";
             cin >> opcionv;
             switch (opcionv) {
@@ -204,10 +204,12 @@ int main() {
             break;
         default:
             break;
-        
-        cout << "Desea continuar? (s/n)";
-        cin >> opc;
-    } while (opc == 's' || opc == 'S');
-    system("pause");
-    return 0;
-}
+
+            cout << "Desea continuar? (s/n)";
+            cin >> opc;
+        } while (opc == 's' || opc == 'S');
+        break;
+        system("pause");
+        return 0;
+    }
+};

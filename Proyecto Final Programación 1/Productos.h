@@ -66,7 +66,7 @@ public:
 			string tt = to_string(idMarca);
 			string pc = to_string(precio_costo);
 			string pv = to_string(precio_venta);
-			string insert = "INSERT INTO productos(idProducto,producto,idMarca,descripcion,imagen,precio_costo,precio_venta,existencia,fecha_ingreso) "
+			string insert = "INSERT INTO productos(idProducto,producto,idMarca,Descripcion,Imagen,precio_costo,precio_venta,existencia,fecha_ingreso) "
 				"VALUES('" + t + "','" + producto + "','" + tt + "','" + descripcion + "','" + imagen + "','" + pc + "'," + pv + ",'" + to_string(existencia) + "','NOW()')";
 			const char* i = insert.c_str();
 			q_estado = mysql_query(cn.getConectar(), i);
@@ -171,7 +171,7 @@ public:
 			string tt = to_string(idMarca);
 			string pv = to_string(precio_venta);
 			string pc = to_string(precio_costo);
-			string update = "UPDATE productos SET producto='" + producto + "',idMarca='" + tt + "',descripcion='" + descripcion + "',imagen='" + imagen + "',precio_costo='" + pc + "',precio_venta=" + pv + ",existencia='" + to_string(existencia) + "',fecha_ingreso='" + fecha_ingreso + "' WHERE idProducto = '" + t + "'";
+			string update = "UPDATE productos SET producto='" + producto + "',idMarca='" + tt + "',Descripcion='" + descripcion + "',Imagen='" + imagen + "',precio_costo='" + pc + "',precio_venta=" + pv + ",existencia='" + to_string(existencia) + "',fecha_ingreso='" + fecha_ingreso + "' WHERE idProducto = '" + t + "'";
 			const char* u = update.c_str();
 			q_estado = mysql_query(cn.getConectar(), u);
 			if (!q_estado) {

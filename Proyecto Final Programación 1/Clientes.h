@@ -166,7 +166,7 @@ public:
 		MYSQL_RES* resultado;
 		cn.abrir_conexion();
 		if (cn.getConectar()) {
-			string consulta = "SELECT nombres,apellidos FROM clientes where Nit='" + Nit + "'";
+			string consulta = "SELECT nombres,apellidos FROM clientes where NIT='" + Nit + "'";
 			const char* x = consulta.c_str();
 			q_estado = mysql_query(cn.getConectar(), x);
 			if (!q_estado) {
