@@ -1,8 +1,7 @@
-﻿  Clientes.cpp
+﻿  Funcionalidades.cpp
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\ventas_detalle.h(204,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Funcionalidades.h(492,10): warning C4101: 'opcion': variable local sin referencia
   Proyecto Final Programación 1.cpp
-  Generando código
-  0 of 183 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-  Proyecto Final Programación 1.vcxproj -> C:\Users\venno\Desktop\Proyecto Final Programación 1\x64\Release\Proyecto Final Programación 1.exe
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\ventas_detalle.h(204,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Proyecto Final Programación 1\Funcionalidades.h(492,10): warning C4101: 'opcion': variable local sin referencia
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1389,5): error MSB4023: No se pueden evaluar los metadatos del elemento "%(FullPath)". Los metadatos "%(FullPath)" del elemento no pueden aplicarse a la ruta de acceso "C:\Users\venno\Desktop\Proyecto Final Programación 1\x64\Release\Proyecto Final Programación 1.exe/FORCE:MULTIPLE". No se admite el formato proporcionado de la ruta de acceso.

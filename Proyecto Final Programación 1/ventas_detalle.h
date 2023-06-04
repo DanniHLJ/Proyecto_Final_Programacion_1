@@ -3,6 +3,7 @@
 #include <mysql.h>
 #include "ConexionBD.h"
 #include <string>
+
 class Ventas_detalle
 {
 private:
@@ -375,7 +376,7 @@ public:
 			}
 		}
 		else {
-			cout << "Error en la conexi�n" << endl;
+			cout << "Error en la conexion" << endl;
 			return false;
 		}
 		cn.cerrar_conexion();

@@ -364,6 +364,7 @@ void D_Proveedores() {
     Proveedores d = Proveedores(idProveedore);
     d.eliminar();
 };
+//Table Ventas_Detalle
 void C_ventas_detalle() {
 
     int idVenta = 0, no_factura = 0, idempleado = 0, idcliente = 0, idproducto = 0, idventa = 0, idventa_detalle = 0;
@@ -429,7 +430,6 @@ void C_ventas_detalle() {
     C = Ventas_detalle(idVenta, no_factura, serie, fechafactura, idcliente, idempleado, idventa_detalle, idVenta, idproducto, cantidad, precio_unitario);
     C.crear();
 };
-
 void R_ventas_detalle() {
     Ventas_detalle r = Ventas_detalle();
     r.leer();
@@ -487,6 +487,7 @@ void D_ventas_detalle() {
     Ventas_detalle D = Ventas_detalle(idVenta, idventa_detalle);
     D.eliminar();
 };
+//Table Compras
 
 void C_Compras() {
     char opcion;
@@ -545,7 +546,6 @@ void C_Compras() {
     Compras C = Compras(idcompra, no_orden_compra, idProveedor, fecha_orden, id_compra_detalle, idcompra, idproducto, cantidad, precio_costo_unitario);
     C.crear();
 };
-
 void R_Compras() {
     Compras r = Compras();
     r.leer();

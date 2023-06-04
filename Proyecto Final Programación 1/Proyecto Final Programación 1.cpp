@@ -1,7 +1,15 @@
 #include <iostream>
 #include "Funcionalidades.h"
+
 using namespace std;
+
+
+
+
+
+
 int main() {
+   
     char opc;
     int opcion = 0;
     do {
@@ -207,9 +215,8 @@ int main() {
 
             cout << "Desea continuar? (s/n)";
             cin >> opc;
-        } while (opc == 's' || opc == 'S');
-        break;
-        system("pause");
-        return 0;
-    }
+
+        }
+          }while (opc == 's' || opc == 'S');
+
 };
