@@ -1,0 +1,8 @@
+﻿  Proyecto Final Programación 1.cpp
+C:\Users\venno\Desktop\Proyecto Final Programación 1\ventas_detalle.h(204,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Funcionalidades.h(493,10): warning C4101: 'opcion': variable local sin referencia
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Empleados.h(164): warning C4715: 'Empleados::leerId': no todas las rutas de acceso de control devuelven un valor
+C:\Users\venno\Desktop\Proyecto Final Programación 1\Productos.h(163): warning C4715: 'Productos::leerId': no todas las rutas de acceso de control devuelven un valor
+C:\Users\venno\Desktop\Proyecto Final Programación 1\ventas_detalle.h(306): warning C4715: 'Ventas_detalle::leerIdEmpleados': no todas las rutas de acceso de control devuelven un valor
+C:\Users\venno\Desktop\Proyecto Final Programación 1\ventas_detalle.h(345): warning C4715: 'Ventas_detalle::leerIdProductos': no todas las rutas de acceso de control devuelven un valor
+  Proyecto Final Programación 1.vcxproj -> C:\Users\venno\Desktop\Proyecto Final Programación 1\x64\Debug\Proyecto Final Programación 1.exe
